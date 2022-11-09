@@ -1,7 +1,5 @@
 # learning
 
-# learning
-
 # コーディング規約について
 
 ## 命名規則

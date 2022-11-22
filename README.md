@@ -4,17 +4,56 @@
 
 ## 命名規則
 
-| 言語       | クラス     | 変数/関数  | 定数          | 例外                    |
-| ---------- | ---------- | ---------- | ------------- | ----------------------- |
-| TypeScript | PascalCase | camelCase  | CONSTANT_CASE |                         |
-| Python     | PascakCase | snake_case | CONSTANT_CASE | PascalCase 末尾に Error |
+| 言語       | クラス     | 変数/関数  | 定数          | 例外                    | タイプ/Enum |
+| ---------- | ---------- | ---------- | ------------- | ----------------------- | ----------- |
+| TypeScript | PascalCase | camelCase  | CONSTANT_CASE | -                       | PascalCase  |
+| Python     | PascakCase | snake_case | CONSTANT_CASE | PascalCase 末尾に Error | -           |
 
 ※過去案件の命名規則
 
 定数や変数は何を表しているか、何を目的とするか、何を処理するかを意識してできるだけ命名だけで内容がわかるようにする
 命名と内容に齟齬がある場合は命名を変更したり、他の関数に切り分ける
+
+修正前
+
+```javascript
+const main = () => {
+  const isOver = isOverDate();
+};
+
+const isOverDate = () => {
+  const now = new Date();
+  const date = now.getDate();
+  axios.get("http://127.0.0.1:8000/api/hello").then((res) => {
+    return res.data.date > date;
+  });
+};
+```
+
+関数名の切り分け修正後
+
+```javascript
+const main = () => {
+  const isOver = getApiDate() > getNowDate();
+};
+
+const getNowDate = () => {
+  const now = new Date();
+  const date = now.getDate();
+  return date;
+};
+
+const getApiDate = () => {
+  axios.get("http://127.0.0.1:8000/api/hello").then((res) => {
+    return res.data.date;
+  });
+};
+```
+
 関数名は動詞を先頭に処理内容に沿った命名をする
-例：副詞（to, for など）は多用しない
+例：getInputAddress()
+
+副詞（to, for など）は多用しない
 
 ## マジックナンバー
 
@@ -58,7 +97,7 @@ prettier と ESLint は、似ていますが、
 - ESLint は構文チェックができる
   というようなそれぞれの利点がある
 
-ですが、両方を導入してみるとそれぞれの設定で、ルールが競合する場合がある。
+ですが、両方を導入してみるとそれぞれの設定で、ルールが競合する場合がある
 例えば、prettier の設定では、XXXX なルールでコードをフォーマットしてるが、ESLint では YYYYY のルールで構文解析をしていて、
 prettier で自動でコードフォーマットしても、ESLint で構文がおかしいって怒られ、それを fix して prettier を動かすと、
 prettier のルールで自動でフォーマットされるというのが競合してると無限に繰り返されという問題がある
@@ -86,11 +125,12 @@ ignore_missing_imports:型定義のないライブラリの import による警�
 #### isort
 
 import 文の並び順を警告する
-`import [ファイルパス]`で自動で並び替える
+`import [ファイル名]`で自動で並び替える
 並び順は以下のようになる
-標準ライブラリ
-サードパーティに関連するもの
-ローカルな アプリケーション/ライブラリ に特有のもの
+
+> 標準ライブラリ
+> サードパーティに関連するもの
+> ローカルな アプリケーション/ライブラリ に特有のもの
 
 #### flake8
 
@@ -101,9 +141,22 @@ Python コードの問題点を簡単に見つけることができる
 真偽値の入った変数を＝で比較している
 export 句に捕捉する例外を記載していないなど
 
+・ハマったところ
+長い文字列の折り返しについて、たとえば文字列長が 35 文字制限のだとしたら以下のように改行する
+
+```python
+logging.info("あいうえおかきくけこさしすせそたちつてと"/
+"なにぬねのはひふへほ")
+
+# 出力結果：あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほ
+```
+
 https://arakan-pgm-ai.hatenablog.com/entry/2018/11/12/090000
 
 #### bandit
 
 コード上に潜むセキュリティの脆弱性などを警告する
 例えば、ディレクトリや SQL、URL をハード記載していると警告するなど
+
+・ハマったところ
+プロジェクトの都合上、URL と SQL のハード記載をしていたが警告でコミットできなかったので該当行に「# nosec」を付与する

@@ -73,6 +73,16 @@ const getApiDate = () => {
 処理に変更があり引数が増えた際にも修正箇所を減らすことができる
 例：testFunction(param.id, param.delFlg, param.createDate) → testFunction(param)
 
+## 連想配列
+
+### map
+
+key の指定は item,index の指定は index を命名する。
+key の指定を key とすると、動的な関数に設定する key とかぶってしまうので注意する。
+
+値のみ取り出したい場合は`Object.values(data).map` data に値が入る。
+key のみ取り出したい場合は`Object.keys(data).map` data に key が入る。
+
 ## 静的解析ツール
 
 ### フロントエンド

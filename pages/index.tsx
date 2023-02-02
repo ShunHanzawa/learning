@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import type { NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import {
@@ -22,7 +23,7 @@ import { ArticleCard } from '../components/ArticleCard';
 // import Typography from '@mui/material/Typography';
 // import { Button, CardActionArea, CardActions } from '@mui/material';
 
-export default function Home() {
+const Home: NextPage = () => {
 
   const cardItems = [
     {
@@ -85,3 +86,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;

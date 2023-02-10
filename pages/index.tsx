@@ -20,11 +20,6 @@ import { ArticleCard } from '../components/ArticleCard';
 import { Top } from '@/components';
 import { jsx, css, Global, ClassNames } from '@emotion/react';
 
-// import Card from '@mui/material/Card';
-// import CardContent from '@mui/material/CardContent';
-// import Typography from '@mui/material/Typography';
-// import { Button, CardActionArea, CardActions } from '@mui/material';
-
 const Home: NextPage = () => {
   const cardItems = [
     {
@@ -52,39 +47,42 @@ const Home: NextPage = () => {
       url: ''
     }
   ];
-  const stringStyle = css`
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 10px;
-  `;
 
   return (
     <Box sx={{}}>
       <Top />
-      <Box sx={{}}>
-        <Divider sx={{ width: '80%', m: '40px auto' }} />
-        <Box sx={{ width: 'auto', height: 'auto', mx: 'auto' }}>
-          <Grid
-            container
-            rowSpacing={1}
-            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-            spacing={0}
-          >
-            {cardItems.map((item, index) => {
-              return (
-                <Grid item xs={5} key={index} sx={{}}>
-                  <ArticleCard
-                    image={item.image}
-                    title={item.title}
-                    detail={item.detail}
-                    url={item.url}
-                    key={index}
-                  />
-                </Grid>
-              );
-            })}
-          </Grid>
-        </Box>
+      <Divider sx={{ width: '80%', m: '0px auto 40px' }} />
+      <Box
+        sx={{
+          width: 'auto',
+          height: 'auto'
+        }}
+      >
+        <Grid
+          container
+          rowSpacing={1}
+          spacing={2}
+          sx={{
+            maxWidth: '900px',
+            justifyContent: 'center',
+            marginRight: 'auto',
+            marginLeft: 'auto'
+          }}
+        >
+          {cardItems.map((item, index) => {
+            return (
+              <Grid item xs={5} key={index}>
+                <ArticleCard
+                  image={item.image}
+                  title={item.title}
+                  detail={item.detail}
+                  url={item.url}
+                  key={index}
+                />
+              </Grid>
+            );
+          })}
+        </Grid>
       </Box>
     </Box>
   );

@@ -1,24 +1,36 @@
 {
+  "workbench.editor.enablePreview": false,
+  "files.insertFinalNewline": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "diffEditor.maxComputationTime": 0,
+  "settingsSync.ignoredExtensions": [],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "eslint.format.enable": false,
-  "editor.formatOnSave": true,
-  "[javascript]": {
+  "[html]": {
+    "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.formatOnSave": true
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.formatOnSave": true
   },
-  "editor.lineNumbers": "on",
-  "editor.rulers": [80],
-  "editor.wordWrap": "on",
-  "eslint.packageManager": "yarn",
-  "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": true,
-  "npm.packageManager": "yarn",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "[typescriptreact]": {
+    "editor.formatOnSave": true
+  },
+  "html.format.contentUnformatted": "",
+  "editor.quickSuggestions": {
+    "strings": true
+  }
 }

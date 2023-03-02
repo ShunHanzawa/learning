@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { useState } from 'react';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
@@ -15,75 +15,75 @@ import {
   Grid
 } from '@mui/material';
 import NextImage from 'next/image';
-import item1 from '../public/item1.jpg';
 import { ArticleCard } from '../components/ArticleCard';
-import { Top } from '@/components';
-import { jsx, css, Global, ClassNames } from '@emotion/react';
+import {
+  Fotter,
+  Header,
+  CategoryFilter,
+  InfoCard,
+  StoreInformation
+} from '@/components';
+import { COLORS, HEADER_FONT, FEATURE_CARDS, MENU_CARDS } from '@/utils/const';
+import pizzaImage from '@/public/pizza.jpg';
 
 const Home: NextPage = () => {
-  const cardItems = [
-    {
-      image: item1.src,
-      title: '一つ目',
-      detail: '詳細詳細詳細詳細詳細詳細',
-      url: ''
-    },
-    {
-      image: item1.src,
-      title: '一つ目',
-      detail: '詳細詳細詳細詳細詳細詳細',
-      url: ''
-    },
-    {
-      image: item1.src,
-      title: '一つ目',
-      detail: '詳細詳細詳細詳細詳細詳細',
-      url: ''
-    },
-    {
-      image: item1.src,
-      title: '一つ目',
-      detail: '詳細詳細詳細詳細詳細詳細',
-      url: ''
-    }
-  ];
-
   return (
-    <Box sx={{}}>
-      <Top />
-      <Divider sx={{ width: '80%', m: '0px auto 40px' }} />
-      <Box
-        sx={{
-          width: 'auto',
-          height: 'auto'
-        }}
-      >
-        <Grid
-          container
-          rowSpacing={1}
-          spacing={2}
+    <Box sx={{ height: '100%', backgroundColor: COLORS.darkGreen }}>
+      <Header />
+      <Divider
+        variant="middle"
+        sx={{ my: '30px', borderColor: COLORS.darkWhite }}
+      />
+      <Box sx={{ height: { xs: 80, md: 150 }, position: 'relative' }}>
+        <Box sx={{}}>
+          <Image src={pizzaImage} objectFit="cover" alt="pizza_image" fill />
+        </Box>
+        <Typography
           sx={{
-            maxWidth: '900px',
-            justifyContent: 'center',
-            marginRight: 'auto',
-            marginLeft: 'auto'
+            position: 'absolute',
+            textAlign: 'center',
+            top: '20%',
+            right: 0,
+            left: 0,
+            color: COLORS.white,
+            ...HEADER_FONT,
+            fontSize: { xs: 36, md: 48 }
           }}
         >
-          {cardItems.map((item, index) => {
-            return (
-              <Grid item xs={5} key={index}>
-                <ArticleCard
-                  image={item.image}
-                  title={item.title}
-                  detail={item.detail}
-                  url={item.url}
-                  key={index}
-                />
-              </Grid>
-            );
-          })}
-        </Grid>
+          Feature
+        </Typography>
       </Box>
+      {FEATURE_CARDS.map((item, index) => {
+        return <InfoCard item={item} key={index} />;
+      })}
+      <Box>
+        <Typography
+          sx={{
+            mt: '50px',
+            textAlign: 'center',
+            verticalAlign: 'middle',
+            color: COLORS.white,
+            ...HEADER_FONT,
+            fontSize: { xs: 36, md: 48 }
+          }}
+        >
+          Menu
+        </Typography>
+        <Divider
+          variant="middle"
+          sx={{
+            width: '80vw',
+            mx: 'auto',
+            my: '30px',
+            borderColor: COLORS.darkWhite
+          }}
+        />
+        {MENU_CARDS.map((item, index) => {
+          return <InfoCard item={item} key={index} />;
+        })}
+      </Box>
+      <StoreInformation />
+      <Fotter />
     </Box>
   );
 };

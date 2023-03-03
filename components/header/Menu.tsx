@@ -49,7 +49,7 @@ export const Menu = () => {
           top: 10,
           right: 10,
           display: { xs: 'absolute', md: 'none' },
-          visibility: { xs: 'visible', md: 'hidden' },
+          // visibility: { xs: 'visible', md: 'hidden' },
           position: 'fixed',
           zIndex: 1000
         }}
@@ -97,7 +97,7 @@ export const Menu = () => {
         sx={{
           height: '50px',
           backgroundColor: COLORS.rightBlack,
-          display: 'flex',
+          display: { xs: 'none', md: 'flex' },
           mb: '30px'
         }}
       >

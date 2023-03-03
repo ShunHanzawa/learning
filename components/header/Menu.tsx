@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { COLORS, HEADER_FONT } from '@/utils/const';
+import { COLORS, FONT } from '@/utils/const';
 import {
   Box,
   Drawer,
@@ -49,7 +49,6 @@ export const Menu = () => {
           top: 10,
           right: 10,
           display: { xs: 'absolute', md: 'none' },
-          // visibility: { xs: 'visible', md: 'hidden' },
           position: 'fixed',
           zIndex: 1000
         }}
@@ -111,7 +110,7 @@ export const Menu = () => {
               my: 'auto',
               fontSize: '24px',
               color: COLORS.white,
-              ...HEADER_FONT,
+              ...FONT,
               textDecoration: 'underline',
               textDecorationColor: COLORS.white
             }}

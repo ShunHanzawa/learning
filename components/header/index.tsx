@@ -1,10 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
 import TopImage from '../../public/top.jpg';
-import { Icon } from '@mui/material';
-import { DrawerMenu } from '@/components';
-import MenuIcon from '@mui/icons-material/Menu';
-import { COLORS, HEADER_FONT } from '@/utils/const';
+import { COLORS, FONT } from '@/utils/const';
 import { Menu } from './Menu';
 
 export const Header = () => {
@@ -24,7 +21,7 @@ export const Header = () => {
             top: '40%',
             mx: 'auto',
             color: COLORS.white,
-            ...HEADER_FONT,
+            ...FONT,
             fontSize: { xs: 64, md: 96 }
           }}
         >

@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { COLORS, HEADER_FONT } from '@/utils/const';
+import { COLORS, FONT } from '@/utils/const';
 
 export const Fotter = () => {
   return (
@@ -11,7 +11,7 @@ export const Fotter = () => {
           pt: '20px',
           color: COLORS.white,
           fontSize: '12px',
-          ...HEADER_FONT
+          ...FONT
         }}
       >
         @copy right

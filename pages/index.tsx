@@ -4,8 +4,21 @@ import { Box, Divider, Typography } from '@mui/material';
 import { Fotter, Header, InfoCard, StoreInformation } from '@/components';
 import { COLORS, FONT, FEATURE_CARDS, MENU_CARDS } from '@/utils/const';
 import pizzaImage from '@/public/pizza.jpg';
+import axios from 'axios';
+
+// バックエンド接続テスト
+// const test = async () => {
+//   const url = 'http://127.0.0.1:8000/api/list';
+//   const res = await axios.get(url);
+//   return res;
+// };
 
 const Home: NextPage = () => {
+  // const responce = test();
+  // console.log(responce);
+  // responce.map((item, index) => {
+  //   console.log(item);
+  // });
   return (
     <Box sx={{ height: '100%', backgroundColor: COLORS.darkGreen }}>
       <Header />
